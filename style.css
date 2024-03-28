@@ -70,7 +70,7 @@ button {
 }
 
 .hero-section {
-  background-image: url("./Lif.jpg");
+  background-image: url(/images/Lif.jpg);
   background-color: #d71f1f;
   height: 500px;
   background-position: center;
