@@ -243,8 +243,27 @@ footer {
 
 footer{
   background: #440246de;
+  margin-left: auto;
+  margin-right: auto;
 }
 .copyright {
   margin: 30px;
   padding: auto;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+footer, img {
+  padding-left: 50px;
+}
+ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-right: 20px;
 }
