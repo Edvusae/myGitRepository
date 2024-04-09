@@ -195,13 +195,25 @@ h3 {
     flex-wrap: wrap;
   }
 }
+.Vision {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: #440246de;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px;
+}
+.form {
+  box-sizing: border-box;
+  background-color: antiquewhite;
+  padding: 10px;
+}
 input[type=text], select, textarea {
   display: flex;
   justify-content: center;
   padding: 12px;
-  box-sizing: border-box;
   width: 50%;
-  
   margin-top: 6px;
   margin-bottom: 16px;
 }
@@ -223,21 +235,13 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 .container {
-  display: block;
+  display: flex;
   justify-content: center;
+  flex-direction: row-reverse;
   border-radius: 5px;
-  background-color: #f2f2f2;
   padding: 20px;
   margin-left: auto;
   margin-right: auto;
-}
-form {
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding-left: 30px;
 }
 .footer {
   margin-top: 30px;
@@ -257,6 +261,10 @@ footer{
 .copyright {
   margin: 30px;
   padding: auto;
+}
+.container img {
+  padding-right: 20px;
+  width: 400px;
 }
 nav {
   display: flex;
