@@ -258,10 +258,6 @@ footer{
   margin-left: auto;
   margin-right: auto;
 }
-.copyright {
-  margin: 30px;
-  padding: auto;
-}
 .container img {
   padding-right: 20px;
   width: 400px;
@@ -282,4 +278,10 @@ ul {
   align-items: center;
   gap: 20px;
   margin-right: 20px;
+}
+.copyright {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+  padding: auto;
 }
