@@ -72,7 +72,7 @@ button {
 
 .hero-section {
   background-image: url(/images/Lif.jpg);
-  background-color: #d71f1f;
+  background-color: #fffcfc;
   height: 500px;
   background-position: center;
   background-repeat: no-repeat;
@@ -207,7 +207,10 @@ h3 {
 .form {
   box-sizing: border-box;
   background-color: antiquewhite;
-  padding: 10px;
+  padding-top: 10px;
+  margin: auto;
+  border:solid #04AA6D;
+  margin-top: 20px;
 }
 input[type=text], select, textarea {
   display: flex;
@@ -244,8 +247,8 @@ input[type=submit]:hover {
   margin-right: auto;
 }
 .footer {
-  margin-top: 30px;
-  padding-top: 30px;
+  margin-top: 20px;
+  padding-top: 20px;
 }
 footer {
   display: flex;
