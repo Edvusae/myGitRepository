@@ -60,11 +60,13 @@ nav a {
     text-align: center;
     padding: 100px 20px; /* Increased padding for a larger hero section */
     position: relative; /* For overlay positioning */
+    height: 550px; /* Fixed height for the hero section */
 }
 
-.hero-section::after {
-    content: '';
-    position: absolute;
+.hero-section::after { 
+    /* Overlay for better text visibility */
+    content: ''; /* Empty content for the overlay */
+    position: absolute; /* Positioning the overlay */
     top: 0;
     left: 0;
     right: 0;
@@ -83,15 +85,37 @@ nav a {
     z-index: 2; /* Ensure text is above overlay */
 }
 
-.slider {
-    text-align: center;
-    padding: 40px 20px;
-    background-color: #ffffff; /* Added background for contrast */
+.container {
+    text-align: center; /* Center the heading */
+    padding: 20px; /* Add some spacing around the container */
 }
 
-.slider h2 {
-    margin-bottom: 20px;
-    font-size: 36px; /* Larger font size for header */
+h1 {
+    margin-bottom: 20px; /* Space between heading and slider */
+    font-size: 24px; /* Adjust heading size as needed */
+}
+
+.slider {
+    display: flex;
+    flex-direction: row; /* Horizontal layout for images */
+    justify-content: center; /* Center images */
+    align-items: center; /* Align images vertically */
+    padding: 20px; /* Padding around the slider */
+    background-color: #ffffff; /* Background color for contrast */
+    overflow: hidden; /* Prevent overflow */
+}
+
+.slider img {
+    width: 100%;
+    max-width: 300px; /* Limit width of each image */
+    height: auto;
+    border-radius: 10px; /* Rounded corners */
+    margin: 0 10px; /* Space between images */
+    transition: transform 0.3s; /* Smooth hover effect */
+}
+
+.slider img:hover {
+    transform: scale(1.05); /* Scale on hover */
 }
 
 .card-container {
