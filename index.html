@@ -10,7 +10,7 @@
   <link rel="icon" href="data:;base64,iVBORw0KGgo=">
   <!-- Preconnect fonts if you will add later -->
   <!-- CSS will be added in stylesheets (variables, layout, components) -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body class="theme-dark">
   <!-- App shell -->
@@ -126,3 +126,100 @@
         </div>
 
         <!-- TRANSACTIONS & FIL
+
+        <!-- TRANSACTIONS & FILTERS -->
+        <div class="transactions-panel">
+          <div class="panel-header">
+            <h3 class="panel-title">Transactions</h3>
+            <div class="filters">
+              <select id="filter-type" class="select">
+                <option value="all">All</option>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+              </select>
+
+              <select id="filter-category" class="select">
+                <option value="all">All categories</option>
+                <option value="food">Food</option>
+                <option value="transport">Transport</option>
+                <option value="salary">Salary</option>
+              </select>
+
+              <button id="export-csv" class="btn-outline">Export CSV</button>
+            </div>
+          </div>
+
+          <div class="panel-body">
+            <!-- FULL ADD TRANSACTION FORM -->
+            <section class="add-transaction">
+              <form id="transaction-form" class="transaction-form" novalidate>
+                <div class="form-row">
+                  <label for="text">Title</label>
+                  <input id="text" name="text" type="text" placeholder="e.g., Grocery" required />
+                </div>
+
+                <div class="form-row">
+                  <label for="amount">Amount</label>
+                  <input id="amount" name="amount" type="number" step="0.01" placeholder="e.g., 25.00" required />
+                </div>
+
+                <div class="form-row row-inline">
+                  <div>
+                    <label for="category">Category</label>
+                    <select id="category" name="category">
+                      <option value="food">Food</option>
+                      <option value="transport">Transport</option>
+                      <option value="entertainment">Entertainment</option>
+                      <option value="salary">Salary</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label for="date">Date</label>
+                    <input id="date" name="date" type="date" required />
+                  </div>
+
+                  <div>
+                    <label for="type">Type</label>
+                    <select id="type" name="type" required>
+                      <option value="expense">Expense</option>
+                      <option value="income">Income</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-row form-actions">
+                  <button type="submit" class="btn btn-primary">Add Transaction</button>
+                  <button type="reset" class="btn btn-ghost">Reset</button>
+                </div>
+              </form>
+            </section>
+
+            <!-- TRANSACTION LIST -->
+            <section class="transaction-list-wrap" aria-live="polite">
+              <ul id="transaction-list" class="transaction-list">
+                <!-- JS will render <li> transaction items here -->
+                <li class="empty-state">No transactions yet — add your first transaction.</li>
+              </ul>
+            </section>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <small>Made with ❤️ — Vanilla JS • HTML • CSS</small>
+        <div class="footer-links">
+          <a href="#" class="link">Docs</a>
+          <a href="#" class="link">Source</a>
+        </div>
+      </footer>
+    </main>
+
+  </div>
+
+  <!-- Scripts will be linked here -->
+  <!-- <script src="js/app.js" type="module"></script> -->
+</body>
+</html>
