@@ -519,10 +519,144 @@ input:focus, select:focus {
   .donut { width: 110px; height: 110px; }
 }
 
+/* ============================================
+   MICRO-ANIMATIONS — NeonFinance UI Add-on
+   ============================================ */
+
+/* --- Neon card hover --- */
+.card {
+  transition: transform 180ms ease, box-shadow 260ms ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 22px rgba(0, 234, 255, 0.10),
+              0 10px 35px rgba(0, 0, 0, 0.55);
+}
+
+/* --- Buttons neon pulse --- */
+.btn-primary,
+.btn-neon {
+  transition: transform 150ms ease, box-shadow 250ms ease, opacity 200ms;
+}
+
+.btn-primary:hover,
+.btn-neon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 18px rgba(0, 234, 255, 0.22), 
+              0 4px 18px rgba(0, 0, 0, 0.40);
+}
+
+.btn-primary:active,
+.btn-neon:active {
+  transform: translateY(0);
+  opacity: 0.85;
+}
+
+/* --- Sidebar nav neon glide --- */
+.nav-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 234, 255, 0.22),
+    transparent 65%
+  );
+  transition: opacity 250ms ease;
+}
+
+.nav-btn:hover::after {
+  opacity: 1;
+}
+
+/* --- Smooth icon-btn hover --- */
+.icon-btn {
+  transition: transform 180ms ease, box-shadow 200ms ease;
+}
+.icon-btn:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 0 18px rgba(0, 234, 255, 0.18);
+}
+
+/* --- Inputs & selects (neon focus ring) --- */
+input,
+select,
+textarea {
+  transition: box-shadow 220ms ease, border-color 200ms ease, background 180ms ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 0 2px rgba(0, 234, 255, 0.45),
+              0 0 20px rgba(0, 234, 255, 0.15);
+  border-color: var(--accent);
+  background: #12171d;
+}
+
+/* --- Search bar hover --- */
+.input-search:hover {
+  box-shadow: 0 0 14px rgba(0, 234, 255, 0.10);
+}
+
+/* --- Donut light pulse --- */
+@keyframes donutPulse {
+  0% { box-shadow: 0 0 0 rgba(0,234,255,0.1); }
+  50% { box-shadow: 0 0 22px rgba(0,234,255,0.20); }
+  100% { box-shadow: 0 0 0 rgba(0,234,255,0.1); }
+}
+
+.donut {
+  animation: donutPulse 4s infinite ease-in-out;
+}
+
+/* --- Smooth panel transitions (filters etc.) --- */
+.select,
+.btn-outline,
+.filter select {
+  transition: background 180ms ease, transform 150ms ease, box-shadow 240ms ease;
+}
+
+.select:hover,
+.btn-outline:hover {
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-2px);
+}
+
+/* --- Transaction rows micro hover --- */
+.transaction-list li {
+  transition: background 160ms ease, transform 140ms ease;
+}
+
+.transaction-list li:hover {
+  background: rgba(0, 234, 255, 0.04);
+  transform: translateX(3px);
+}
+
+/* --- Avatar hover --- */
+.avatar-btn {
+  transition: transform 160ms ease, box-shadow 220ms ease;
+}
+
+.avatar-btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 16px rgba(0, 234, 255, 0.25);
+}
+
+/* ---------- RESPONSIVE ADJUSTMENTS ---------- */
+
 @media (max-width: 600px) {
   .input-search { width: 120px; }
   .topbar-left { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
+
+
 
 /* ================================
    END OF FILE
