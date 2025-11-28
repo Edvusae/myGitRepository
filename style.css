@@ -1,230 +1,179 @@
+/* ------------------------------
+   1. ROOT VARIABLES
+--------------------------------*/
+:root {
+  --bg: #0d0f17;
+  --bg-alt: #12141f;
+
+  --card-bg: #161922;
+  --card-border: rgba(255,255,255,0.08);
+
+  --text: #e4e7ee;
+  --text-dim: #8b90a5;
+
+  --accent: #1fa2ff;  /* Neon Blue */
+  --accent2: #12d8fa; /* Cyan */
+  --accent3: #a6ffcb; /* Mint */
+
+  --radius: 14px;
+  --shadow: 0 0 25px rgba(31,162,255,0.12);
+  --transition: 0.25s ease;
+
+  --font: "Inter", sans-serif;
+}
+
+/* ------------------------------
+   2. RESET
+--------------------------------*/
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
-    margin-left: 10px;
-    margin-right: 10px; 
-    line-height: 1.6; /* Improved readability */
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
 }
 
+/* ------------------------------
+   3. LAYOUT
+--------------------------------*/
+.dashboard {
+  max-width: 1300px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* Top header */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+header h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
 }
 
-nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-}
-
-.cta {
-    flex: 1;
-    text-align: right;
-}
-
-.cta button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-    font-size: 16px; /* Increased font size */
-}
-
-.cta button:hover {
-    background-color: #0056b3;
-}
-
-.hero-section {
-    background: url('./images/ES\ March\ 3.png') no-repeat center center/cover;
-    color: white;
-    text-align: center;
-    padding: 100px 20px; /* Increased padding for a larger hero section */
-    position: relative; /* For overlay positioning */
-    height: 550px; /* Fixed height for the hero section */
-}
-
-.hero-section::after { 
-    /* Overlay for better text visibility */
-    content: ''; /* Empty content for the overlay */
-    position: absolute; /* Positioning the overlay */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay for better text contrast */
-    z-index: 1;
-}
-
-.hero-section h1 {
-    font-size: 48px; /* Larger heading */
-    z-index: 2; /* Ensure text is above overlay */
-}
-
-.hero-section p {
-    font-size: 20px; /* Increased font size for better readability */
-    z-index: 2; /* Ensure text is above overlay */
-}
-
-.container {
-    text-align: center; /* Center the heading */
-    padding: 20px; /* Add some spacing around the container */
-}
-
-h1 {
-    margin-bottom: 20px; /* Space between heading and slider */
-    font-size: 24px; /* Adjust heading size as needed */
-}
-
-.slider {
-    display: flex;
-    flex-direction: row; /* Horizontal layout for images */
-    justify-content: center; /* Center images */
-    align-items: center; /* Align images vertically */
-    padding: 20px; /* Padding around the slider */
-    background-color: #ffffff; /* Background color for contrast */
-    overflow: hidden; /* Prevent overflow */
-}
-
-.slider img {
-    width: 100%;
-    max-width: 300px; /* Limit width of each image */
-    height: auto;
-    border-radius: 10px; /* Rounded corners */
-    margin: 0 10px; /* Space between images */
-    transition: transform 0.3s; /* Smooth hover effect */
-}
-
-.slider img:hover {
-    transform: scale(1.05); /* Scale on hover */
-}
-
-h3 {
-    margin-top: 20px; /* Space between slider and heading */
-    font-size: 28px; /* Larger font size for the heading */
-    color: #333; /* Darker color for better contrast */
-    text-align: center; /* Center the heading */
-}
-
-.card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
-    gap: 20px;
-    padding: 20px;
-    max-width: 1200px; /* Limit the width of the card container */
-    margin: 0 auto; /* Center the card container */
+/* ------------------------------
+   4. CARDS (Summary)
+--------------------------------*/
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .card {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s; /* Hover effect */
+  padding: 1.4rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
 }
 
 .card:hover {
-    transform: scale(1.05); /* Slightly increase size on hover */
+  transform: translateY(-4px);
+  box-shadow: 0 0 35px rgba(31,162,255,0.18);
 }
 
-.card img {
-    width: 100%;
-    height: auto;
+.card-title {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin-bottom: .5rem;
 }
 
-.card-content {
-    padding: 15px;
+.card-value {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--accent2);
 }
 
-.card-button {
-    background-color: #007BFF;
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 5px;
-    display: inline-block;
-    margin-top: 10px;
+/* ------------------------------
+   5. TRANSACTION FORM
+--------------------------------*/
+.form-section {
+  margin: 2rem 0;
+  padding: 1.6rem;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  border: 1px solid var(--card-border);
 }
 
-.vision {
-    padding: 20px;
-    text-align: center;
+form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1.2rem;
 }
 
-.footer, .copyright {
-    text-align: center;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+form input, 
+form select {
+  background: #10131b;
+  border: 1px solid #1a1d27;
+  padding: 0.7rem;
+  border-radius: var(--radius);
+  color: var(--text);
+  transition: var(--transition);
 }
 
-.footer nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 0;
+form input:focus,
+form select:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 8px rgba(31,162,255,0.4);
 }
 
-.contact-form {
-    padding: 20px;
-    background-color: #e9ecef;
-    max-width: 600px; /* Set max width for the form */
-    margin: 20px auto; /* Center the form */
+button.submit-btn {
+  grid-column: 1 / -1;
+  padding: .9rem;
+  border: none;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: var(--radius);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
 }
 
-.contact-form label {
-    display: block;
-    margin: 10px 0 5px;
+button.submit-btn:hover {
+  opacity: .9;
 }
 
-.contact-form input[type="text"],
-.contact-form input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
+/* ------------------------------
+   6. FILTER BAR
+--------------------------------*/
+.filter-bar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
-.contact-form input[type="submit"] {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
+.filter-bar select {
+  background: #10131b;
+  border: 1px solid #1a1d27;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius);
+  color: var(--text);
 }
 
-.contact-form input[type="submit"]:hover {
-    background-color: #0056b3;
+/* ------------------------------
+   7. TRANSACTION LIST
+--------------------------------*/
+.transaction-list {
+  margin-top: 1.5rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--card-border);
 }
 
-@media (max-width: 600px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .cta button {
-        width: 100%;
-    }
-}
+.transaction-item {
+  display: grid;
+  grid-template-columns
