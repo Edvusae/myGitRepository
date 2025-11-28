@@ -1,77 +1,127 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malengo Hygiene Services</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Neon Finance — Personal Finance Dashboard</title>
+  <!-- Meta for recruiters -->
+  <meta name="description" content="Personal Finance Dashboard — Dark neo-finance UI built with pure HTML, CSS & Vanilla JavaScript." />
+  <!-- Favicon placeholder -->
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <!-- Preconnect fonts if you will add later -->
+  <!-- CSS will be added in stylesheets (variables, layout, components) -->
 </head>
-<body>
-    <header>
-        <img src="./images/MALENGO HYGIENE SERVICES LOGO.png" width="100" alt="Logo">
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Interests</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="hero-section">
-            <div class="slider">
-                <div class="slide"><img src="./images/architecture.jpg" alt="Architecture"></div>
-                <div class="slide"><img src="./images/tech.jpg" alt="Technology"></div>
-                <div class="slide"><img src="./images/travel.jpg" alt="Traveling"></div>
+<body class="theme-dark">
+  <!-- App shell -->
+  <div id="app" class="app-shell">
+
+    <!-- SIDEBAR (optional collapsed) -->
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="brand">
+        <!-- Neon logo mark -->
+        <svg class="logo" width="40" height="40" viewBox="0 0 24 24" aria-hidden="true">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0%" stop-color="#6EE7F0" />
+              <stop offset="100%" stop-color="#7C4DFF" />
+            </linearGradient>
+          </defs>
+          <rect x="2" y="2" width="20" height="20" rx="6" fill="url(#g1)" />
+        </svg>
+        <h1 class="brand-title">NeonFinance</h1>
+      </div>
+
+      <nav class="nav" role="navigation" aria-label="Main">
+        <ul class="nav-list">
+          <li class="nav-item active"><button class="nav-btn" data-nav="dashboard" aria-pressed="true">Dashboard</button></li>
+          <li class="nav-item"><button class="nav-btn" data-nav="transactions">Transactions</button></li>
+          <li class="nav-item"><button class="nav-btn" data-nav="reports">Reports</button></li>
+          <li class="nav-item"><button class="nav-btn" data-nav="settings">Settings</button></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="toggle-theme" class="icon-btn" aria-label="Toggle theme">🌙</button>
+        <small class="brand-sub">v1.0</small>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main" id="main" role="main" aria-labelledby="dashboard-heading">
+
+      <!-- HEADER -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <h2 id="dashboard-heading" class="page-title">Dashboard</h2>
+          <div class="month-selector" role="group" aria-label="Select month">
+            <button class="chev" id="prev-month" aria-label="Previous month">‹</button>
+            <select id="filter-month" class="select" aria-label="Filter by month">
+              <!-- JS will populate months -->
+              <option value="2025-11">Nov 2025</option>
+            </select>
+            <button class="chev" id="next-month" aria-label="Next month">›</button>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="search-wrap">
+            <label class="visually-hidden" for="search">Search transactions</label>
+            <input id="search" class="input-search" type="search" placeholder="Search transactions..." />
+            <button class="icon-btn" id="search-btn" aria-label="Search">🔍</button>
+          </div>
+
+          <div class="profile">
+            <button class="avatar-btn" id="profile-btn" aria-haspopup="true" aria-expanded="false">
+              <img src="" alt="Your avatar" class="avatar" aria-hidden="true" />
+              <span class="visually-hidden">Open profile menu</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- GRID LAYOUT -->
+      <section class="grid">
+
+        <!-- SUMMARY CARDS -->
+        <div class="summary">
+          <div class="card balance-card" id="card-balance" aria-live="polite">
+            <div class="card-top">
+              <h3 class="card-title">Balance</h3>
+              <div class="card-actions">
+                <button class="icon-btn" id="sync-btn" title="Sync">⟳</button>
+              </div>
             </div>
-            <div class="scrolling-text">
-                <p>Passionate about Web Development and Frontend Technologies!</p>
+            <div class="card-value" id="balance-value">$0.00</div>
+            <div class="card-meta">
+              <span class="income" id="income-value">+ $0.00</span>
+              <span class="expense" id="expense-value">- $0.00</span>
             </div>
-        </section>
-        <section class="languages">
-            <h2>Web Development Languages</h2>
-            <img src="./images/html.png" alt="HTML">
-            <img src="./images/css.png" alt="CSS">
-            <img src="./images/javascript.png" alt="JavaScript">
-            <img src="./images/react.png" alt="React">
-            <img src="./images/nodejs.png" alt="Node.js">
-        </section>
-        <section class="two-column">
-            <div class="column">
-                <img src="./images/web-developer.jpg" alt="Web Developer" style="width: 100%;">
-            </div>
-            <div class="column">
-                <h3>My Passion for Web Development</h3>
-                <p>I love building intuitive and engaging websites. My expertise lies in creating responsive designs and using modern frameworks to develop user-friendly applications.</p>
-            </div>
-        </section>
-        
-        <section class="contact-form">
-            <h3>Contact Us</h3>
-            <form action="/action_page.php">
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="firstname" placeholder="Your name..">
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Your email..">
-                <input type="submit" value="Submit">
+          </div>
+
+          <div class="card quick-add-card" id="quick-add">
+            <h3 class="card-title">Quick Add</h3>
+            <!-- Simple inline form for quick add (JS will hook) -->
+            <form id="quick-add-form" class="quick-add-form" autocomplete="off">
+              <input type="text" name="q-text" id="q-text" placeholder="Title e.g., Coffee" required />
+              <div class="row">
+                <input type="number" name="q-amount" id="q-amount" placeholder="Amount" step="0.01" required />
+                <select name="q-type" id="q-type" aria-label="Type">
+                  <option value="expense">Expense</option>
+                  <option value="income">Income</option>
+                </select>
+                <button type="submit" class="btn btn-neon">Add</button>
+              </div>
             </form>
-        </section>
-    </main>
-    <footer>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Interests</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
-        </nav>
-        <p>&copy; 2024 Malengo, Ltd;</p>
-    </footer>
-    <script src="index.js"></script>
-</body>
-</html>
+          </div>
+
+          <div class="card chart-card" id="spend-chart">
+            <h3 class="card-title">Spending by Category</h3>
+            <div class="chart-wrap">
+              <!-- CSS conic-gradient chart placeholder -->
+              <div id="donut" class="donut" role="img" aria-label="Spending chart"></div>
+              <ul id="legend" class="legend"></ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRANSACTIONS & FIL
