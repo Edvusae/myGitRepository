@@ -176,4 +176,75 @@ button.submit-btn:hover {
 
 .transaction-item {
   display: grid;
-  grid-template-columns
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--card-border);
+  align-items: center;
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.amount.income { color: var(--accent3); }
+.amount.expense { color: #ff6b81; }
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #ff6b81;
+  cursor: pointer;
+  font-size: .9rem;
+}
+
+/* ------------------------------
+   8. RING CHART (CSS)
+--------------------------------*/
+.chart-card {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+}
+
+.ring {
+  width: 180px;
+  height: 180px;
+  margin: auto;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--accent) 0deg, 
+    var(--accent2) 0deg, 
+    #222 0deg
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ring-inner {
+  width: 110px;
+  height: 110px;
+  background: var(--bg);
+  border-radius: 50%;
+}
+
+/* ------------------------------
+   9. RESPONSIVE
+--------------------------------*/
+@media (max-width: 780px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+  }
+}
+/* ------------------------------
+   10. UTILITIES
