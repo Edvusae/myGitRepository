@@ -1,6 +1,6 @@
-import { loadState } from "./storage.js";
+import { loadState } from "./storage/storage.js";
 import { addTransaction, calculateTotals } from "./transactions.js";
-import { renderTransactions, updateDashboard } from "./ui.js";
+import { renderTransactions, updateDashboard } from "./ui/ui.js";
 import { renderDonutChart } from "./chart.js";
 import { state } from "./state/state.js";
 

@@ -1,6 +1,6 @@
-import { state } from "./state/state.js";
-import { applyFilters } from "./filters.js";
-import { calculateTotals } from "./transactions.js";
+import { state } from "../state/state.js";
+import { applyFilters } from "../filters.js";
+import { calculateTotals } from "../transactions.js";
 
 const listEl = document.getElementById("transaction-list");
 const balanceEl = document.querySelector(".balance-amount");

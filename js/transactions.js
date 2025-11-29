@@ -1,6 +1,6 @@
 import { state } from "./state/state.js";
-import { saveState } from "./storage.js";
-import { renderTransactions, updateDashboard } from "./ui.js";
+import { saveState } from "./storage/storage.js";
+import { renderTransactions, updateDashboard } from "./ui/ui.js";
 
 export function addTransaction(data) {
   const newTx = {

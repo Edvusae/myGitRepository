@@ -1,5 +1,5 @@
 // storage.js
-import { state } from "./state/state.js";
+import { state } from "../state/state.js";
 
 const STORAGE_KEY = "neonfinance-data";
 
