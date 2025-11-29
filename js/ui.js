@@ -1,4 +1,4 @@
-import { state } from "./state.js";
+import { state } from "./state/state.js";
 import { applyFilters } from "./filters.js";
 import { calculateTotals } from "./transactions.js";
 

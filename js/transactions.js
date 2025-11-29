@@ -1,4 +1,4 @@
-import { state } from "./state.js";
+import { state } from "./state/state.js";
 import { saveState } from "./storage.js";
 import { renderTransactions, updateDashboard } from "./ui.js";
 

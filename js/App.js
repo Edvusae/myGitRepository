@@ -2,7 +2,7 @@ import { loadState } from "./storage.js";
 import { addTransaction, calculateTotals } from "./transactions.js";
 import { renderTransactions, updateDashboard } from "./ui.js";
 import { renderDonutChart } from "./chart.js";
-import { state } from "./state.js";
+import { state } from "./state/state.js";
 
 const form = document.getElementById("transaction-form");
 const filterType = document.getElementById("filter-type");
