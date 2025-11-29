@@ -13,4 +13,6 @@ export function loadState() {
     state.transactions = JSON.parse(data);
   }
 }
---- IGNORE ---
+
+// Load state on initial script execution
+loadState();
