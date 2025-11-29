@@ -1,18 +1,19 @@
-// storage.js
-import { state } from "../state/state.js";
+const KEY = "neonfinance_transactions";
 
-const STORAGE_KEY = "neonfinance-data";
+export function loadTransactions() {
+    return JSON.parse(localStorage.getItem(KEY)) || [];
+}
 
-export function saveState() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state.transactions));
+export function saveTransactions(data) {
+    localStorage.setItem(KEY, JSON.stringify(data));
 }
 
 export function loadState() {
-  const data = localStorage.getItem(STORAGE_KEY);
-  if (data) {
-    state.transactions = JSON.parse(data);
-  }
+    const saved = localStorage.getItem("neonfinance_state"); 
+    return saved ? JSON.parse(saved) : null;
+}
+export function saveState(state) {
+    localStorage.setItem("neonfinance_state", JSON.stringify(state));
 }
 
-// Load state on initial script execution
-loadState();
+// --- IGNORE ---

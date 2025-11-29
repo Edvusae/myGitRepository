@@ -1,42 +1,71 @@
-import { state } from "./state/state.js";
-import { saveState } from "./storage/storage.js";
-import { renderTransactions, updateDashboard } from "./ui/ui.js";
+import { loadTransactions, saveTransactions } from "./storage.js";
+import { renderTransactions, updateBalance } from "./ui.js";
 
-export function addTransaction(data) {
-  const newTx = {
-    id: Date.now(),
-    ...data
-  };
+export function initTransactionForm() {
+    const form = document.querySelector("#transaction-form");
 
-  state.transactions.push(newTx);
-  saveState();
+    form.addEventListener("submit", e => {
+        e.preventDefault();
 
-  renderTransactions();
-  updateDashboard();
-}
+        const title = form.title.value.trim();
+        const amount = parseFloat(form.amount.value);
+        const category = form.category.value;
+        const date = form.date.value;
+        const type = form.type.value; // income or expense
 
-export function deleteTransaction(id) {
-  state.transactions = state.transactions.filter(tx => tx.id !== id);
-  saveState();
+        if (!title || !amount || !date) {
+            alert("Please fill all the fields");
+            return;
+        }
 
-  renderTransactions();
-  updateDashboard();
+        const transaction = {
+            id: Date.now(),
+            title,
+            amount,
+            category,
+            date,
+            type
+        };
+
+        const data = loadTransactions();
+        data.push(transaction);
+        saveTransactions(data);
+
+        form.reset();
+
+        renderTransactions(data);
+        updateBalance(data);
+    });
 }
 
 export function calculateTotals() {
-  let income = 0;
-  let expense = 0;
+    const data = loadTransactions();
+    let income = 0;
+    let expense = 0;
+    data.forEach(t => {
+        if (t.type === "income") income += t.amount;
+        else expense += t.amount;
+    });
+    return { income, expense };
+}
+// Initial rendering on script load
+const data = loadTransactions();
+renderTransactions(data);
+updateBalance(data);
 
-  state.transactions.forEach(tx => {
-    if (tx.type === "income") income += tx.amount;
-    else expense += tx.amount;
-  });
-
-  return {
-    income,
-    expense,
-    balance: income - expense
-  };
+export function addTransaction(transaction) {
+    const data = loadTransactions();
+    data.push(transaction);   
+    saveTransactions(data);
+    renderTransactions(data);
+    updateBalance(data);
 }
 
-// Initial rendering on script load
+
+export function deleteTransaction(id) {
+    let data = loadTransactions();
+    data = data.filter(t => t.id !== id);
+    saveTransactions(data);
+    renderTransactions(data);
+    updateBalance(data);
+}

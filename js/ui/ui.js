@@ -1,37 +1,42 @@
-import { state } from "../state/state.js";
-import { applyFilters } from "../filters.js";
-import { calculateTotals } from "../transactions.js";
+export function renderTransactions(data) {
+    const list = document.querySelector(".transaction-list");
+    const empty = document.querySelector(".empty-state");
 
-const listEl = document.getElementById("transaction-list");
-const balanceEl = document.querySelector(".balance-amount");
+    if (data.length === 0) {
+        list.innerHTML = "";
+        empty.style.display = "block";
+        return;
+    }
 
-export function renderTransactions() {
-  listEl.innerHTML = "";
+    empty.style.display = "none";
 
-  const filtered = applyFilters(state.transactions);
+    list.innerHTML = data.map(t => `
+        <li>
+            <div>
+                <strong>${t.title}</strong>
+                <small>${t.date} | ${t.category}</small>
+            </div>
+            <div style="color:${t.type === "income" ? "#4ade80" : "#ff5a79"}">
+                ${t.type === "income" ? "+" : "-"}$${t.amount}
+            </div>
+        </li>
+    `).join("");
+}
 
-  if (filtered.length === 0) {
-    listEl.innerHTML = `<li class="empty-state">No transactions found.</li>`;
-    return;
-  }
+export function updateBalance(data) {
+    let income = 0;
+    let expense = 0;
 
-  filtered.forEach(tx => {
-    const li = document.createElement("li");
+    data.forEach(t => {
+        if (t.type === "income") income += t.amount;
+        else expense += t.amount;
+    });
 
-    li.innerHTML = `
-      <span>${tx.text} — ${tx.category}</span>
-      <span style="color:${tx.type === "income" ? "var(--success)" : "var(--danger)"};">
-        ${tx.type === "income" ? "+" : "-"}$${tx.amount.toFixed(2)}
-      </span>
-    `;
-
-    listEl.appendChild(li);
-  });
+    const balance = income - expense;
+    document.querySelector(".balance-amount").textContent = `$${balance.toFixed(2)}`;
 }
 
 export function updateDashboard() {
-  const totals = calculateTotals();
-  balanceEl.textContent = `$${totals.balance.toFixed(2)}`;
-}
-
-// Initial rendering on script load
+    const incomeElem = document.querySelector(".income-amount");
+    const expenseElem = document.querySelector(".expense-amount");
+    const balanceElem = document.querySelector(".balance-amount");  
