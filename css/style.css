@@ -639,6 +639,124 @@ textarea:focus {
   transform: translateX(3px);
 }
 
+/* Add this to your CSS file */
+
+.transactions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+}
+
+.transaction-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(0, 217, 255, 0.3);
+}
+
+.transaction-info {
+    flex: 1;
+}
+
+.transaction-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 0.25rem;
+}
+
+.transaction-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.transaction-category {
+    color: #00d9ff;
+}
+
+.transaction-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.transaction-amount {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.transaction-amount.income {
+    color: #06ffa5;
+}
+
+.transaction-amount.expense {
+    color: #ff006e;
+}
+
+.delete-btn {
+    background: rgba(255, 0, 110, 0.1);
+    border: 1px solid rgba(255, 0, 110, 0.3);
+    color: #ff006e;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    line-height: 1;
+    padding: 0;
+}
+
+.delete-btn:hover {
+    background: rgba(255, 0, 110, 0.2);
+    border-color: #ff006e;
+    transform: scale(1.1);
+}
+
+.no-transactions {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1rem;
+}
+
+.chart-canvas {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.pie-chart {
+    width: 100%;
+    height: auto;
+}
+
+.chart-slice {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.chart-slice:hover {
+    opacity: 0.8;
+}
+
 /* --- Avatar hover --- */
 .avatar-btn {
   transition: transform 160ms ease, box-shadow 220ms ease;
