@@ -1,12 +1,13 @@
-import { loadTransactions } from "./storage.js";
-import { renderTransactions, updateBalance } from "./ui.js";
-import { initTransactionForm } from "./transactions.js";
+// app.js
+import { initQuickAdd } from "./features/quickAdd.js";
+import { updateBalance } from "./utils/updateUI.js";
+import { getTransactions } from "./utils/storage.js";
 
-window.addEventListener("DOMContentLoaded", () => {
-    const data = loadTransactions();
-    renderTransactions(data);
-    updateBalance(data);
-    initTransactionForm();
+document.addEventListener("DOMContentLoaded", () => {
+    initQuickAdd();
+
+    // On load: update balance
+    updateBalance(getTransactions());
+
 });
 
-// --- IGNORE ---
