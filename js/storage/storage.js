@@ -16,4 +16,15 @@ export function saveState(state) {
     localStorage.setItem("neonfinance_state", JSON.stringify(state));
 }
 
+// storage.js
+export const getTransactions = () => {
+    return JSON.parse(localStorage.getItem("transactions")) || [];
+};
+
+export const saveTransactions = (transactions) => {
+    localStorage.setItem("transactions", JSON.stringify(transactions));
+};
+
+
+
 // --- IGNORE ---

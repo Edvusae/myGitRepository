@@ -1,52 +1,45 @@
-// js/features/quickAdd.js
-// ----------------------------------------------
-// QUICK ADD WIDGET — Handles fast transaction input
-// ----------------------------------------------
+// quickAdd.js
+import { getTransactions, saveTransactions } from "../utils/storage.js";
+import { updateBalance } from "../utils/updateUI.js";
 
-import { addTransaction } from '../data/transactionStore.js';
-import { renderTransactions } from '../ui/renderTransactions.js';
-import { updateDashboardCards } from '../ui/updateDashboard.js';
+export const initQuickAdd = () => {
+    const titleInput = document.getElementById("quick-title");
+    const amountInput = document.getElementById("quick-amount");
+    const typeSelect = document.getElementById("quick-type");
+    const addBtn = document.getElementById("quick-add-btn");
 
-export function initQuickAdd() {
-  const quickForm = document.getElementById('quick-add-form');
-  const titleInput = document.getElementById('quick-title');
-  const amountInput = document.getElementById('quick-amount');
-  const typeSelect = document.getElementById('quick-type');
+    addBtn.addEventListener("click", () => {
+        const title = titleInput.value.trim();
+        const amount = parseFloat(amountInput.value);
+        const type = typeSelect.value;
 
-  if (!quickForm) return;
+        if (!title || isNaN(amount) || amount <= 0) {
+            alert("Please provide a valid title and amount.");
+            return;
+        }
 
-  quickForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+        const newTransaction = {
+            id: Date.now(),
+            title,
+            amount,
+            type,
+            date: new Date().toISOString()
+        };
 
-    const title = titleInput.value.trim();
-    const amount = parseFloat(amountInput.value);
-    const type = typeSelect.value;
+        const transactions = getTransactions();
+        transactions.push(newTransaction);
+        saveTransactions(transactions);
 
-    if (!title || isNaN(amount)) {
-      alert('Please enter valid inputs.');
-      return;
-    }
+        updateBalance(transactions);
 
-    // Build transaction object
-    const transaction = {
-      id: Date.now(),
-      title,
-      amount,
-      type,
-      category: 'quick-add',
-      date: new Date().toISOString().split('T')[0],
-    };
+        titleInput.value = "";
+        amountInput.value = "";
+        typeSelect.value = "expense";
+    });
+};
 
-    // Save to store
-    addTransaction(transaction);
+window.addEventListener("DOMContentLoaded", () => {
+    initQuickAdd();
+});
 
-    // Re-render UI
-    renderTransactions();
-    updateDashboardCards();
-
-    // Reset inputs
-    quickForm.reset();
-  });
-}
-
-// --- IGNORE ---
+// quickAdd.js

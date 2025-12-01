@@ -39,4 +39,54 @@ export function updateBalance(data) {
 export function updateDashboard() {
     const incomeElem = document.querySelector(".income-amount");
     const expenseElem = document.querySelector(".expense-amount");
-    const balanceElem = document.querySelector(".balance-amount");  
+    const balanceElem = document.querySelector(".balance-amount"); 
+    const data = loadTransactions();
+
+    let income = 0;
+    let expense = 0;    
+    data.forEach(t => {
+        if (t.type === "income") income += t.amount;
+        else expense += t.amount;
+    });
+    const balance = income - expense;
+    incomeElem.textContent = `$${income.toFixed(2)}`;
+    expenseElem.textContent = `$${expense.toFixed(2)}`;
+    balanceElem.textContent = `$${balance.toFixed(2)}`;
+}
+// updateUI.js
+export const updateBalance = (transactions) => {
+    const income = transactions
+        .filter(t => t.type === "income")
+        .reduce((sum, t) => sum + t.amount, 0);
+
+    const expense = transactions
+        .filter(t => t.type === "expense")
+        .reduce((sum, t) => sum + t.amount, 0);
+
+    const balance = income - expense;
+
+    document.getElementById("balance-amount").textContent = `$${balance.toFixed(2)}`;
+    document.getElementById("income-amount").textContent = `+$${income.toFixed(2)}`;
+    document.getElementById("expense-amount").textContent = `-$${expense.toFixed(2)}`;
+};
+// updateUI.js
+export const updateBalance = (transactions) => {
+    const income = transactions
+        .filter(t => t.type === "income")
+        .reduce((sum, t) => sum + t.amount, 0);
+
+    const expense = transactions
+        .filter(t => t.type === "expense")
+        .reduce((sum, t) => sum + t.amount, 0);
+
+    const balance = income - expense;
+
+    document.getElementById("balance-amount").textContent = `$${balance.toFixed(2)}`;
+    document.getElementById("income-amount").textContent = `+$${income.toFixed(2)}`;
+    document.getElementById("expense-amount").textContent = `-$${expense.toFixed(2)}`;
+};
+
+
+// ui.js
+
+// --- IGNORE ---
