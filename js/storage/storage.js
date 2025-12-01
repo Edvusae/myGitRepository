@@ -1,4 +1,4 @@
-// storage.js
+// js/storage/storage.js
 const TRANSACTIONS_KEY = "neonfinance_transactions";
 const STATE_KEY = "neonfinance_state";
 

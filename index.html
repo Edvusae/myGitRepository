@@ -218,17 +218,13 @@
     </main>
 
   </div>
-
-  <!-- Scripts will be linked here -->
-  <script src="js/state.js" type="module"></script>
-  <script src="js/storage.js" type="module"></script>
-  <script src="js/transactions.js" type="module"></script>
-  <script src="js/filters.js" type="module"></script>
-  <script src="js/ui.js" type="module"></script>
-  <script src="js/charts.js" type="module"></script>
-  <script src="js/App.js" type="module"></script>
-  <script src="js/features/quickAdd.js" type="module"></script>
-  
-  <!-- <script src="js/app.js" type="module"></script> -->
+<!-- Load in correct order: storage -> state -> features/ui -> charts -> app -->
+<script src="js/storage/storage.js" type="module"></script>
+<script src="js/state/state.js" type="module"></script>
+<script src="js/utils/utils.js" type="module"></script>
+<script src="js/features/quickAdd.js" type="module"></script>
+<script src="js/ui/ui.js" type="module"></script>
+<script src="js/charts.js" type="module"></script>
+<script src="js/app.js" type="module"></script>
 </body>
 </html>

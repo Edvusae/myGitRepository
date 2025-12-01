@@ -641,13 +641,16 @@ textarea:focus {
 
 /* Add this to your CSS file */
 
-.transactions-list {
+/* Add this to your css/style.css file */
+
+/* Transaction List Styles */
+.transaction-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    max-height: 500px;
-    overflow-y: auto;
-    padding: 1rem;
 }
 
 .transaction-item {
@@ -655,15 +658,15 @@ textarea:focus {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.2s ease;
 }
 
 .transaction-item:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(0, 217, 255, 0.3);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(110, 231, 240, 0.3);
 }
 
 .transaction-info {
@@ -681,11 +684,16 @@ textarea:focus {
     display: flex;
     gap: 1rem;
     font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .transaction-category {
-    color: #00d9ff;
+    color: #6EE7F0;
+    text-transform: capitalize;
+}
+
+.transaction-date {
+    color: rgba(255, 255, 255, 0.4);
 }
 
 .transaction-actions {
@@ -697,6 +705,8 @@ textarea:focus {
 .transaction-amount {
     font-size: 1.125rem;
     font-weight: 600;
+    min-width: 100px;
+    text-align: right;
 }
 
 .transaction-amount.income {
@@ -730,32 +740,90 @@ textarea:focus {
     transform: scale(1.1);
 }
 
-.no-transactions {
+.empty-state {
     text-align: center;
     padding: 3rem 1rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.4);
     font-size: 1rem;
+    list-style: none;
 }
 
-.chart-canvas {
-    width: 100%;
-    max-width: 300px;
+/* Chart Styles */
+.donut {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
     margin: 0 auto;
 }
 
-.pie-chart {
-    width: 100%;
-    height: auto;
+.donut::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background: var(--bg-primary, #1a1a1a);
+    border-radius: 50%;
 }
 
-.chart-slice {
-    cursor: pointer;
-    transition: opacity 0.2s ease;
+.legend {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.chart-slice:hover {
-    opacity: 0.8;
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.875rem;
 }
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.legend-label {
+    flex: 1;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: capitalize;
+}
+
+.legend-value {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8125rem;
+}
+
+/* Balance Card Styles */
+.card-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 1rem 0 0.5rem;
+}
+
+.card-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.875rem;
+}
+
+.card-meta .income {
+    color: #06ffa5;
+}
+
+.card-meta .expense {
+    color: #ff006e;
+}
+
 
 /* --- Avatar hover --- */
 .avatar-btn {
